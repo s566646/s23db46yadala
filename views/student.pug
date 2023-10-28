@@ -2,7 +2,18 @@ extends layout
 
 block content
   h1= title
-  
+  - let results=[{Stu_Name: "Sarins",Stu_Age:18,Mail_Id:"Sarin18@gmail.com"},{Stu_Name: "seetha",Stu_Age:25,Mail_Id:"seetha25@gmail.com"},{Stu_Name: "ram",Stu_Age:19,Mail_Id:"ram@gmail.com"}]
+    div.container-fliud
+        div.row
+            each item,ind in results 
+                div(class='col-sm-2' onclick=`buy(${ind})`) 
+                    p Name  is #{item.Stu_Name}
+                    p Age  is #{item.Stu_Age}
+                    p Mail_Id: #{item.Mail_Id}
+    script. 
+        function buy(i){
+            alert("You purchased item "+(i+1))
+        }
   
       
   
