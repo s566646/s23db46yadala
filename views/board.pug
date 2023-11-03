@@ -4,10 +4,8 @@ block content
   h1= title
   p Number of rows #{query.rows}
   p Number of columns #{query.cols}
-
   - let rows=Number(query.rows)
   - let cols=Number(query.cols)
-
   if !(Number.isInteger(rows)) && !(Number.isInteger(cols))
     p incorrect rows or columns
   else if (rows<1) && (rows>10)
