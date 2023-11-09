@@ -17,7 +17,7 @@ var studentRouter = require('./routes/student');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
 var resourceRouter = require('./routes/resource');
-var Student = require("./models/student");
+var Student = require("./models/Student");
 
 
 

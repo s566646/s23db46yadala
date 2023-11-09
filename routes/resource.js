@@ -8,7 +8,7 @@ var Student_controller = require('../controllers/Student');
 router.get('/', api_controller.api);
 /// COSTUME ROUTES ///
 // POST request for creating a Costume.
-router.post('/Student', Student_controller.Student_create_post);
+router.post('/Student/:id', Student_controller.Student_create_post);
 // DELETE request to delete Costume.
 router.delete('/Student/:id', Student_controller.Student_delete);
 // PUT request to update Costume.
