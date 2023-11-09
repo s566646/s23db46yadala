@@ -4,11 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+
+require('dotenv').config();
+const connectionString =
+process.env.MONGO_CON
+mongoose = require('mongoose');
+mongoose.connect(connectionString);
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var studentRouter = require('./routes/student');
 var boardRouter = require('./routes/board');
 var chooseRouter = require('./routes/choose');
+var resourceRouter = require('./routes/resource');
+var Student = require("./models/student");
 
 
 
@@ -29,6 +38,7 @@ app.use('/users', usersRouter);
 app.use('/student', studentRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
+app.use('/resource', resourceRouter);
 
 
 
@@ -49,5 +59,40 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// We can seed the collection if needed on
+async function recreateDB(){
+  // Delete everything
+  await Student.deleteMany();
+  let instance1 = new
+  Student({Stu_Name:"Satya", Stu_Age:23,Mail_Id:"Satya@gmail.com"});
+
+  instance1.save().then( () => {
+    console.log('Everything went well');
+  }).catch( (e) => {
+    console.log('There was an error', e.message);
+  });
+
+  let instance2 = new
+  Student({Stu_Name:"Narayana", Stu_Age:22,Mail_Id:"Nari@gmail.com"});
+
+  instance2.save().then( () => {
+    console.log('Everything went well');
+  }).catch( (e) => {
+    console.log('There was an error', e.message);
+  });
+
+  let instance3 = new
+  Student({Stu_Name:"Ganesh", Stu_Age:21,Mail_Id:"Ganey@yahoo.com"});
+
+  instance3.save().then( () => {
+    console.log('Everything went well');
+  }).catch( (e) => {
+    console.log('There was an error', e.message);
+  });
+  }
+  let reseed = true;
+  if (reseed) { recreateDB();}
+
 
 module.exports = app;
