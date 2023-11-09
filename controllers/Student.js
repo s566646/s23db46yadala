@@ -2,8 +2,8 @@ var Student = require('../models/Student');
 // List of all Student
 exports.Student_list = async function(req, res) {
     try{
-    theStudent = await Student.find();
-    res.send(theStudent);
+    Student = await Student.find();
+    res.send(Student);
     }
     catch(err){
     res.status(500);
@@ -15,8 +15,8 @@ exports.Student_list = async function(req, res) {
 // Handle a show all view
 exports.Student_view_all_Page = async function(req, res) {
 try{
-theStudent = await Student.find();
-res.render('Student', { title: 'Student Search Results', results: theStudent });
+Student = await Student.find();
+res.render('Student', { title: 'Student Search Results', results: Student });
 }
 catch(err){
 res.status(500);
