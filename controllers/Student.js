@@ -103,3 +103,14 @@ exports.Student_view_one_Page = async function(req, res) {
     res.send(`{'error': '${err}'}`);
     }
    };
+
+   exports.Student_create_Page = function (req, res) {
+    console.log("create view")
+    try {
+        res.render('Studentcreate', { title: 'Student Create' });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};

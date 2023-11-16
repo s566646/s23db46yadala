@@ -5,5 +5,7 @@ var router = express.Router();
 router.get('/', Student_controlers.Student_view_all_Page );
 
 router.get('/detail', Student_controlers.Student_view_one_Page);
+/* GET create Student page */
+router.get('/create', Student_controlers.Student_create_Page);
 
 module.exports = router;
