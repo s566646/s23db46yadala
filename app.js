@@ -3,8 +3,6 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
-
 require('dotenv').config();
 const connectionString =
 process.env.MONGO_CON
@@ -39,10 +37,6 @@ app.use('/student', studentRouter);
 app.use('/board', boardRouter);
 app.use('/choose', chooseRouter);
 app.use('/resource', resourceRouter);
-
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
