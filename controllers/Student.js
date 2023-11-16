@@ -126,3 +126,18 @@ exports.Student_update_Page = async function (req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
+
+exports.Student_delete_Page = async function (req, res) {
+    console.log("Delete view for id " + req.query.id)
+    try {
+        result = await Student.findById(req.query.id)
+        res.render('Studentdelete', {
+            title: 'Student Delete', toShow:
+                result
+        });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
