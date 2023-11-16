@@ -114,3 +114,15 @@ exports.Student_view_one_Page = async function(req, res) {
         res.send(`{'error': '${err}'}`);
     }
 };
+
+exports.Student_update_Page = async function (req, res) {
+    console.log("update view for item " + req.query.id)
+    try {
+        let result = await Student.findById(req.query.id)
+        res.render('Studentupdate', { title: 'Student Update', toShow: result });
+    }
+    catch (err) {
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
