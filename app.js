@@ -30,7 +30,7 @@ var usersRouter = require('./routes/users');
 var StudentRouter = require('./routes/Student');
 var boardRouter = require('./routes/board');
 var resourceRouter = require('./routes/resource');
-var selectorRouter = require('./routes/choose');
+var chooseRouter = require('./routes/choose');
 var Student = require("./models/Student");
   
 var app = express();
@@ -71,7 +71,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/Student', StudentRouter);
 app.use('/Board', boardRouter);
-app.use('/Selector', selectorRouter);
+app.use('/Choose', chooseRouter);
 app.use('/resource', resourceRouter);
 // passport config
 // Use the existing connection
