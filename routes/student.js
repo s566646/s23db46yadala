@@ -1,13 +1,19 @@
 var express = require('express');
-const Student_controlers= require('../controllers/Student');
 var router = express.Router();
-/* GET costumes */
-router.get('/', Student_controlers.Student_view_all_Page );
-
-router.get('/detail', Student_controlers.Student_view_one_Page);
+const Student_controlers= require('../controllers/Student');
+/* GET home page. */
+const secured = (req, res, next) => {
+    if (req.user) {
+        return next();
+    }
+    req.session.returnTo = req.originalUrl;
+    console.log(req.session.returnTo);
+    res.redirect("/login");
+}
+router.get('/',secured, Student_controlers.Student_view_all_Page);
+router.get('/detail',secured, Student_controlers.Student_view_one_Page);
 /* GET create Student page */
-router.get('/create', Student_controlers.Student_create_Page);
-router.get('/update', Student_controlers.Student_update_Page);
-router.get('/delete', Student_controlers.Student_delete_Page);
-
+router.get('/create',secured, Student_controlers.Student_create_Page);
+router.get('/update',secured, Student_controlers.Student_update_Page);
+router.get('/delete',secured, Student_controlers.Student_delete_Page);
 module.exports = router;

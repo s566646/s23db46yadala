@@ -1,23 +1,31 @@
 extends layout
-
 block content
-  h1= title
-  p Welcome to #{title}
-  p Hii, Welcome to srilatha's page 
-  button(type="button", class="btn btn-danger" onclick="goFaster()") press me
-  div(id="Faster") Increase the value
-  a(href='http://localhost:3000/student') student Link
-  script.
-    var mph = 20;
-    var change = 1;
-    function goFaster() {
-    mph += change;
-    change += 1;
+ if (!user)
+    a(href="/login") Login
+    br
+    br
+    a(href="/register") Register
+ if (user)
+    p You are currently logged in as #{user.username}
+    a(href="/Student") Take me to Students
+    br
+    a(href="/logout") Logout
 
-      document.getElementById('Faster').innerHTML=`Count ${mph} with Change ${change}`
+//- extends layout
+
+//- block content
+  h1= title
+  p Never Ever Give Up #{title}
+  button(type="button", class="btn btn-secondary" onclick="doReduce()") press me
+  div(id="reduce") Reduce the value
+  a(href='http://localhost:3000/Student') Link
+  script.
+    let count=20;
+    let change =-1;
+    function doReduce(){
+      console.log("entered fn")
+      count=count+change;
+      change=change-1;
+      document.getElementById('reduce').innerHTML=`Count ${count} with Change ${change}`
     }
-    
-  
-  
- 
-  
+
